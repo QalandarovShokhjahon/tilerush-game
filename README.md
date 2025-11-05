@@ -40,10 +40,6 @@ Bu o‘yinni “jonli” va qiziqarli qiladi.
 
 ---
 
-### 📸 Preview / Ko‘rinish
-```markdown
-![TileRush Preview](images/game-preview.png)
-
 🧑‍💻 Author / Muallif
 
 TechWebby — Shokhjahon 💻
