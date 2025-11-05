@@ -1,0 +1,195 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22c55e;
+  --accent: #60a5fa;
+  --tile: #1f2937;
+  --tile-hover: #374151;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% 10%, #0b1323, var(--bg));
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.app-header h1 {
+  margin: 8px 0 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.app-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.4));
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* Overlay Start Menu */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: rgba(2,6,23,0.66);
+  backdrop-filter: blur(6px);
+  z-index: 50;
+}
+.overlay.show { display: grid; }
+.modal {
+  width: min(92vw, 640px);
+  background: linear-gradient(180deg, #0b1020, #070c16);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px 20px 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.55);
+}
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.modal-head h1 {
+  margin: 0;
+  font-size: clamp(30px, 7vw, 48px);
+}
+.modal-desc {
+  color: var(--muted);
+  margin: 6px 2px 16px;
+  font-size: 0.95rem;
+}
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.modal-actions button { padding: 12px 18px; font-weight: 600; }
+.modal-options { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 8px 0 6px; }
+.modal-options label { color: var(--muted); font-size: .95rem; }
+.modal-options select { background: #0f172a; color: var(--text); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 6px 10px; }
+.modal-brand-line { text-align: center; color: var(--muted); margin-top: 14px; }
+.modal-brand-line a { color: var(--text); text-decoration: none; }
+.modal-brand-line a:hover { text-decoration: underline; }
+.modal-dev { text-align: center; color: var(--muted); margin-top: 6px; }
+.modal-dev strong { color: var(--text); }
+
+.controls .stat span { color: var(--muted); margin-right: 6px; }
+.controls .stat strong { color: var(--text); }
+
+.sound { display: flex; align-items: center; gap: 8px; }
+.sound #muteBtn { min-width: 40px; padding: 8px 10px; }
+.sound #volumeRange { width: 120px; accent-color: var(--accent); }
+
+@media (max-width: 480px) {
+  .sound #volumeRange { width: 90px; }
+}
+
+button {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(180deg, #1f2937, #111827);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+}
+button:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.18); }
+button:active { transform: translateY(0); }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+.board {
+  --size: min(88vw, 520px);
+  width: var(--size);
+  height: var(--size);
+  margin: 18px auto 10px;
+  display: grid;
+  grid-template-columns: repeat(var(--n, 4), 1fr);
+  grid-template-rows: repeat(var(--n, 4), 1fr);
+  gap: 10px;
+  padding: 10px;
+  background: linear-gradient(180deg, #0b1020, #070c16);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: clamp(18px, 5.5vw, 28px);
+  color: #f8fafc;
+  background: linear-gradient(180deg, var(--tile), #111827);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  user-select: none;
+  transition: transform .12s ease, background .2s ease, box-shadow .2s ease;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 8px 18px rgba(0,0,0,.35);
+}
+.tile:hover { background: linear-gradient(180deg, var(--tile-hover), #121826); }
+.tile.movable { outline: 2px dashed rgba(96,165,250,.6); outline-offset: -6px; }
+.tile.empty { background: transparent; border: 1px dashed rgba(255,255,255,0.08); box-shadow: none; }
+
+.message {
+  min-height: 28px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+.app-footer {
+  margin-top: 8px;
+  color: var(--muted);
+  padding: 12px 12px 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.footer-inner .sep { opacity: .5; }
+.app-footer a { color: var(--text); text-decoration: none; }
+.app-footer a:hover { text-decoration: underline; }

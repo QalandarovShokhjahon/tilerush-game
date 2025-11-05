@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uz">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TW | TileRush-Game</title>
+  <link rel="icon" href="images/techwebby-logo.png?v=1" type="image/png" sizes="32x32" />
+  <link rel="icon" href="images/techwebby-logo.png?v=1" type="image/png" sizes="192x192" />
+  <link rel="shortcut icon" href="images/techwebby-logo.png?v=1" type="image/png" />
+  <link rel="apple-touch-icon" href="images/techwebby-logo.png?v=1" />
+  <link rel="stylesheet" href="style.css?v=1" />
+ </head>
+ <body>
+  <section id="menuOverlay" class="overlay" aria-modal="true" role="dialog">
+  <div class="modal">
+   <div class="modal-head">
+    <h1>TileRush-Puzzle</h1>
+   </div>
+    <div class="modal-options">
+     <label>Board:
+      <select id="optSize">
+       <option value="3">3x3</option>
+       <option value="4" selected>4x4</option>
+       <option value="5">5x5</option>
+      </select>
+     </label>
+     <label>Time:
+      <select id="optTime">
+       <option value="180">3:00</option>
+       <option value="300" selected>5:00</option>
+       <option value="600">10:00</option>
+      </select>
+     </label>
+    </div>
+    <p class="modal-desc">Slayding boshqotirmasini 5 daqiqa ichida yeching. Yangi rekordni qo‘lga kiriting!</p>
+    <div class="modal-actions">
+     <button id="btnNewGame">New Game</button>
+     <button id="btnLoadGame" disabled>Load Game</button>
+    </div>
+    <div class="modal-brand-line">by <a href="https://www.techwebby.uz" target="_blank" rel="noopener noreferrer">TechWebby</a></div>
+    <div class="modal-dev">Developed by <strong>Shokhjahon Qalandarov</strong></div>
+    <details class="howto">
+     <summary>How to play</summary>
+     <ul>
+      <li>Maqsad: 1 dan 15 gacha plitkalarni tartib bilan joylashtiring. Bo‘sh katak past-o‘ng burchakda.</li>
+      <li>Harakat: bo‘sh katakka qo‘shni plitkani bosing yoki o‘q tugmalaridan foydalaning.</li>
+      <li>Mobil: chap/o‘ng/yuqori/pastga swipe qiling.</li>
+      <li>Vaqt limiti: 5 daqiqa ichida yeching, aks holda o‘yin tugaydi.</li>
+      <li>Rekord: eng yaxshi vaqt va kam yurishlar saqlanadi.</li>
+     </ul>
+    </details>
+   </div>
+  </section>
+  <main class="app">
+   <header class="app-header">
+    <h1>TileRush</h1>
+   </header>
+   <section class="controls">
+    <div class="left">
+     <button id="shuffle">Boshlash/Aralashtirish</button>
+     <button id="reset" disabled>Qayta boshlash</button>
+    </div>
+    <div class="right stats">
+     <div class="stat"><span>Yurishlar:</span> <strong id="moves">0</strong></div>
+     <div class="stat"><span>Vaqt:</span> <strong id="time">00:00</strong></div>
+    </div>
+    <div class="sound">
+     <button id="muteBtn" aria-label="Mute/Unmute">🔊</button>
+     <input id="volumeRange" type="range" min="0" max="100" value="60" aria-label="Volume" />
+    </div>
+   </section>
+   <section class="board" id="board" aria-label="15 puzzle board" role="grid"></section>
+   <section class="message" id="message" aria-live="polite"></section>
+  </main>
+  <script src="script.js"></script>
+ </body>
+</html>
