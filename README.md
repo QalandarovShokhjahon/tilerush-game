@@ -36,7 +36,7 @@ Bu o‘yinni “jonli” va qiziqarli qiladi.
 ---
 
 ### 💻 Live Demo / Demo
-👉 [Play TileRush](https://QalandarovShokhjahon.github.io/tilerush/)  
+👉 [Play TileRush](https://tilerush-game-5avb.vercel.app//)  
 
 ---
 
